@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZICELLE | Vampire Blood</title>
+    <title>ZICELLE | Coming Soon</title>
     <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;400;600&display=family">
     
     <style>
         :root {
@@ -15,7 +15,6 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --accent-gold: #d4af37; /* Subtle luxury gold accent */
-            --vampire-crimson: #800020; 
             --font-serif: 'Cinzel', serif;
             --font-sans: 'Montserrat', sans-serif;
         }
@@ -39,7 +38,7 @@
             position: relative;
         }
 
-        /* Premium Ambient Background Glow */
+        /* Premium Ambient Background Animation */
         body::before {
             content: '';
             position: absolute;
@@ -47,8 +46,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(128, 0, 32, 0.1) 0%, rgba(3,17,51,0) 75%);
-            animation: ambientFloat 25s infinite linear;
+            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, rgba(3,17,51,0) 70%);
+            animation: ambientFloat 20s infinite linear;
             z-index: 0;
             pointer-events: none;
         }
@@ -62,7 +61,7 @@
         header {
             width: 100%;
             max-width: 1200px;
-            padding: 30px 20px;
+            padding: 40px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,7 +72,7 @@
 
         .header-line {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             flex-grow: 1;
             margin: 0 30px;
         }
@@ -86,214 +85,181 @@
             font-weight: 600;
         }
 
-        /* Main Content Container */
+        /* Main Content Hero */
         main {
-            width: 100%;
-            max-width: 1100px;
+            max-width: 800px;
             padding: 20px;
+            text-align: center;
             z-index: 10;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            flex-grow: 1;
         }
 
-        /* Top Centered Brand Monogram (1000008356.png) */
-        .top-logo-container {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 40px;
+        /* Placeholder for your 1000008356.png Logo */
+        .logo-container {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 30px;
             opacity: 0;
             transform: scale(0.9);
             animation: fadeInScale 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
             position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
-        /* Decorative thin animation ring around the top logo */
-        .top-logo-container::after {
+        /* Decorative ring around the logo image */
+        .logo-container::after {
             content: '';
             position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 50%;
-            animation: spin 35s linear infinite;
+            animation: spin 30s linear infinite;
         }
 
         .logo-img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 8px;
-            display: block;
-        }
-
-        .logo-fallback {
-            display: none;
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 100%;
-            height: 100%;
-            border-radius: 8px;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        /* Split-screen Showcase Layout */
-        .showcase-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-        }
-
-        /* Left Side: Product Image View (1000008937.jpg) */
-        .image-side {
-            opacity: 0;
-            transform: translateX(-30px);
-            animation: fadeInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
-            display: flex;
-            justify-content: center;
-        }
-
-        .product-image-wrapper {
-            width: 100%;
-            max-width: 420px;
-            aspect-ratio: 1 / 1;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(128, 0, 32, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            animation: slowZoom 20s infinite alternate ease-in-out;
-        }
-
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.06); }
-        }
-
-        /* Right Side: Details & Ordering */
-        .info-side {
-            opacity: 0;
-            transform: translateX(30px);
-            animation: fadeInRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.7s forwards;
-            text-align: left;
-        }
-
-        .product-tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.4em;
-            color: var(--accent-gold);
-            margin-bottom: 12px;
-            display: block;
-            font-weight: 600;
+            /* Replace the src path below with your local path if necessary */
+            border-radius: 12px;
         }
 
         .brand-title {
             font-family: var(--font-serif);
-            font-size: 3.8rem;
+            font-size: 3.5rem;
             font-weight: 400;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            line-height: 1.1;
-            margin-bottom: 5px;
-        }
-
-        .product-name {
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
             letter-spacing: 0.25em;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            color: #e6dada;
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .price-tag {
-            font-family: var(--font-serif);
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 25px;
-            display: block;
-            letter-spacing: 1px;
-            font-weight: 600;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
         }
 
         .tagline {
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 200;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.4em;
             color: var(--text-secondary);
-            margin-bottom: 40px;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            max-width: 600px;
             line-height: 1.8;
-            max-width: 500px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.9s forwards;
         }
 
-        /* Ordering Action Button */
-        .order-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 45px;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.85);
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .order-btn:hover {
-            color: #031133;
-            background: var(--text-primary);
-            border-color: var(--text-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
-        }
-
-        /* Footer Identity */
-        footer {
-            width: 100%;
-            max-width: 1200px;
-            padding: 30px 20px;
+        /* Elegant Countdown Timer */
+        .countdown {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 0.65rem;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.25);
-            text-transform: uppercase;
-            z-index: 10;
+            gap: 30px;
+            margin-bottom: 50px;
             opacity: 0;
             animation: fadeIn 2s ease 1.2s forwards;
         }
 
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+
+        .countdown-time {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        .countdown-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        /* Exclusive Privilege Notification Form */
+        .notify-form {
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            position: relative;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 1.5s forwards;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 16px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-right: none;
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: all 0.4s ease;
+        }
+
+        .email-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(212, 175, 55, 0.5);
+        }
+
+        .submit-btn {
+            padding: 0 32px;
+            background: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            color: var(--bg-color);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Footer Details */
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 2s ease 1.8s forwards;
+        }
+
         /* Animation Keyframes */
-        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -306,27 +272,17 @@
             from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
         @keyframes spin {
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive Tweaks */
-        @media (max-width: 868px) {
-            .showcase-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .info-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .brand-title { font-size: 2.8rem; }
-            .product-name { font-size: 1.4rem; }
-            .price-tag { font-size: 1.8rem; }
+        /* Responsive Design Adjustments */
+        @media (max-width: 768px) {
+            .brand-title { font-size: 2.5rem; letter-spacing: 0.15em; }
+            .tagline { font-size: 0.85rem; letter-spacing: 0.25em; }
+            .countdown { gap: 15px; }
+            .countdown-time { font-size: 1.5rem; }
             .header-line { display: none; }
-            .order-btn { width: 100%; max-width: 340px; }
         }
     </style>
 </head>
@@ -336,61 +292,74 @@
     <header>
         <div class="brand-status">Est. 2026</div>
         <div class="header-line"></div>
-        <div class="brand-status">Signature Collection</div>
+        <div class="brand-status">Private Collection</div>
     </header>
 
-    <!-- Main Content Presentation Layout -->
+    <!-- Main Dynamic Teaser Section -->
     <main>
-        
-        <!-- Crowning Monogram Identity at the Upper Center referencing 1000008356.png -->
-        <div class="top-logo-container">
-            <img src="1000008356.png" alt="Zicelle Monogram" class="logo-img" id="brandLogo" onerror="handleImageError()">
-            <div class="logo-fallback" id="logoFallback">Z</div>
+        <!-- Luxury Brand Logo Frame referencing 1000008356.png -->
+        <div class="logo-container">
+            <img src="1000008356.png" alt="Zicelle Monogram" class="logo-img" onerror="this.style.display='none'; this.parentElement.style.border='1px solid rgba(255,255,255,0.2)';">
         </div>
 
-        <div class="showcase-container">
-            
-            <!-- Left Side: Product Image Presentation referencing 1000008937.jpg -->
-            <div class="image-side">
-                <div class="product-image-wrapper">
-                    <img src="1000008937.jpg" alt="Vampire Blood Perfume Bottle" class="product-img" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80'">
-                </div>
+        <h1 class="brand-title">Zicelle</h1>
+        <p class="tagline">An uncompromising vision of luxury. Shaping the definition of modern elegance.</p>
+
+        <!-- Dynamic Countdown Timer to Launch -->
+        <div class="countdown" id="timer">
+            <div class="countdown-item">
+                <span class="countdown-time" id="days">00</span>
+                <span class="countdown-label">Days</span>
             </div>
-
-            <!-- Right Side: Details and Call to Action -->
-            <div class="info-side">
-                <span class="product-tag">The Debut Scent</span>
-                <h1 class="brand-title">Zicelle</h1>
-                <h2 class="product-name">Vampire Blood</h2>
-                
-                <span class="price-tag">999 TK</span>
-                
-                <p class="tagline">
-                    An intoxicating blend of velvet depth and striking sophisticated warmth. 
-                    Crafted meticulously for individuals who leave a lingering mystery long after they vanish.
-                </p>
-
-                <!-- Direct Checkout Link to WhatsApp -->
-                <a href="https://wa.me/8801882343923?text=Hello%20Zicelle%20Team!%20I%20want%20to%20place%20an%20order%20for%20the%20Vampire%20Blood%20Perfume%20(999%20TK)." 
-                   target="_blank" 
-                   class="order-btn">
-                   Order Via WhatsApp
-                </a>
+            <div class="countdown-item">
+                <span class="countdown-time" id="hours">00</span>
+                <span class="countdown-label">Hours</span>
             </div>
-
+            <div class="countdown-item">
+                <span class="countdown-time" id="minutes">00</span>
+                <span class="countdown-label">Mins</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-time" id="seconds">00</span>
+                <span class="countdown-label">Secs</span>
+            </div>
         </div>
+
+        <!-- Exclusive Access Notification Sign-up -->
+        <form class="notify-form" onsubmit="event.preventDefault(); alert('You have been granted early access updates.');">
+            <input type="email" class="email-input" placeholder="Enter your email for private entry" required>
+            <button type="submit" class="submit-btn">Notify</button>
+        </form>
     </main>
 
-    <!-- Footer Frame -->
+    <!-- Footer Identity -->
     <footer>
-        &copy; 2026 Zicelle Maison. All Rights Reserved.
+        &copy; 2026 Zicelle. All Rights Reserved. By invitation only.
     </footer>
 
+    <!-- JavaScript for Live High-End Experience Features -->
     <script>
-        function handleImageError() {
-            document.getElementById('brandLogo').style.display = 'none';
-            document.getElementById('logoFallback').style.display = 'flex';
+        // Set your targeted dynamic countdown date here (e.g., 30 days from now)
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 30); 
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
         }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
     </html>
