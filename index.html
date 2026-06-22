@@ -86,7 +86,7 @@
             font-weight: 600;
         }
 
-        /* Main Showcase Layout */
+        /* Main Content Container */
         main {
             width: 100%;
             max-width: 1100px;
@@ -94,10 +94,61 @@
             z-index: 10;
             flex-grow: 1;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
+        /* Top Centered Brand Monogram (1000008356.png) */
+        .top-logo-container {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: scale(0.9);
+            animation: fadeInScale 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorative thin animation ring around the top logo */
+        .top-logo-container::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 50%;
+            animation: spin 35s linear infinite;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .logo-fallback {
+            display: none;
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Split-screen Showcase Layout */
         .showcase-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -106,12 +157,11 @@
             width: 100%;
         }
 
-        /* Left Side: Premium Image Presentation */
+        /* Left Side: Product Image View (1000008937.jpg) */
         .image-side {
             opacity: 0;
             transform: translateX(-30px);
-            animation: fadeInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
-            position: relative;
+            animation: fadeInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.5s forwards;
             display: flex;
             justify-content: center;
         }
@@ -139,26 +189,11 @@
             100% { transform: scale(1.06); }
         }
 
-        /* Floating Monogram Overlay on Image Corner */
-        .mini-monogram {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 45px;
-            height: 45px;
-            background: rgba(3, 17, 51, 0.85);
-            backdrop-filter: blur(8px);
-            border-radius: 4px;
-            padding: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-
         /* Right Side: Details & Ordering */
         .info-side {
             opacity: 0;
             transform: translateX(30px);
-            animation: fadeInRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+            animation: fadeInRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.7s forwards;
             text-align: left;
         }
 
@@ -263,6 +298,14 @@
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
         @keyframes fadeInLeft {
             from { opacity: 0; transform: translateX(-30px); }
             to { opacity: 1; transform: translateX(0); }
@@ -270,6 +313,9 @@
         @keyframes fadeInRight {
             from { opacity: 0; transform: translateX(30px); }
             to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
         }
 
         /* Responsive Tweaks */
@@ -293,18 +339,21 @@
         <div class="brand-status">Signature Collection</div>
     </header>
 
-    <!-- Main Content Presentation Grid -->
+    <!-- Main Content Presentation Layout -->
     <main>
+        
+        <!-- Crowning Monogram Identity at the Upper Center referencing 1000008356.png -->
+        <div class="top-logo-container">
+            <img src="1000008356.png" alt="Zicelle Monogram" class="logo-img" id="brandLogo" onerror="handleImageError()">
+            <div class="logo-fallback" id="logoFallback">Z</div>
+        </div>
+
         <div class="showcase-container">
             
-            <!-- Left Side: Product Image View -->
+            <!-- Left Side: Product Image Presentation referencing 1000008937.jpg -->
             <div class="image-side">
                 <div class="product-image-wrapper">
-                    <!-- Brand Monogram Overlay referencing 1000008356.png -->
-                    <img src="1000008356.png" class="mini-monogram" alt="Zicelle Monogram" onerror="this.style.display='none'">
-                    
-                    <!-- Main Product Image View referencing 1000008937.jpg -->
-                    <img src="1000008937.jpg" alt="Vampire Blood Perfume Bottle" class="product-img" id="perfumeImg" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80'">
+                    <img src="1000008937.jpg" alt="Vampire Blood Perfume Bottle" class="product-img" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80'">
                 </div>
             </div>
 
@@ -321,7 +370,7 @@
                     Crafted meticulously for individuals who leave a lingering mystery long after they vanish.
                 </p>
 
-                <!-- Direct Checkout Link -->
+                <!-- Direct Checkout Link to WhatsApp -->
                 <a href="https://wa.me/8801882343923?text=Hello%20Zicelle%20Team!%20I%20want%20to%20place%20an%20order%20for%20the%20Vampire%20Blood%20Perfume%20(999%20TK)." 
                    target="_blank" 
                    class="order-btn">
@@ -337,5 +386,11 @@
         &copy; 2026 Zicelle Maison. All Rights Reserved.
     </footer>
 
+    <script>
+        function handleImageError() {
+            document.getElementById('brandLogo').style.display = 'none';
+            document.getElementById('logoFallback').style.display = 'flex';
+        }
+    </script>
 </body>
-</html>
+    </html>
