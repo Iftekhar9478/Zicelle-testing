@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZICELLE | Coming Soon</title>
+    <title>ZICELLE | Vampire Blood</title>
     <!-- Google Fonts for Premium Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --accent-gold: #d4af37; /* Subtle luxury gold accent */
+            --vampire-crimson: #800020; /* Deep crimson accent for Vampire Blood */
             --font-serif: 'Cinzel', serif;
             --font-sans: 'Montserrat', sans-serif;
         }
@@ -38,7 +39,7 @@
             position: relative;
         }
 
-        /* Premium Ambient Background Animation */
+        /* Premium Ambient Background Animation with Crimson Tones */
         body::before {
             content: '';
             position: absolute;
@@ -46,8 +47,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(212,175,55,0.05) 0%, rgba(3,17,51,0) 70%);
-            animation: ambientFloat 20s infinite linear;
+            background: radial-gradient(circle, rgba(128, 0, 32, 0.12) 0%, rgba(3,17,51,0) 75%);
+            animation: ambientFloat 25s infinite linear;
             z-index: 0;
             pointer-events: none;
         }
@@ -87,8 +88,8 @@
 
         /* Main Content Hero */
         main {
-            max-width: 800px;
-            padding: 20px;
+            max-width: 900px;
+            padding: 40px 20px;
             text-align: center;
             z-index: 10;
             display: flex;
@@ -100,9 +101,9 @@
 
         /* Container for 1000008356.png Logo */
         .logo-container {
-            width: 130px;
-            height: 130px;
-            margin-bottom: 35px;
+            width: 90px;
+            height: 90px;
+            margin-bottom: 25px;
             opacity: 0;
             transform: scale(0.9);
             animation: fadeInScale 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
@@ -112,117 +113,135 @@
             justify-content: center;
         }
 
-        /* Decorative ring around the logo image */
+        /* Decorative thin ring around the logo image */
         .logo-container::after {
             content: '';
             position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 50%;
-            animation: spin 30s linear infinite;
+            animation: spin 40s linear infinite;
         }
 
         .logo-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 12px;
             display: block;
         }
 
-        /* Elegant typographic fallback if the image path is broken */
         .logo-fallback {
             display: none;
             font-family: var(--font-serif);
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--text-primary);
             border: 1px solid rgba(255, 255, 255, 0.15);
             width: 100%;
             height: 100%;
-            border-radius: 16px;
+            border-radius: 12px;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.02);
-            letter-spacing: 2px;
         }
 
-        .brand-title {
-            font-family: var(--font-serif);
-            font-size: 3.5rem;
-            font-weight: 400;
-            letter-spacing: 0.25em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+        /* Product Presentation Layout */
+        .product-showcase {
+            margin-top: 10px;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
         }
 
-        .tagline {
-            font-size: 1rem;
-            font-weight: 200;
-            letter-spacing: 0.4em;
-            color: var(--text-secondary);
+        .product-tag {
+            font-size: 0.75rem;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            letter-spacing: 0.4em;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .brand-title {
+            font-family: var(--font-serif);
+            font-size: 3.8rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .product-name {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #f2e6e6;
+            margin: 15px 0 25px 0;
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(128, 0, 32, 0.6);
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            font-weight: 200;
+            letter-spacing: 0.25em;
+            color: var(--text-secondary);
+            margin: 0 auto 45px auto;
             max-width: 600px;
             line-height: 1.8;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.9s forwards;
         }
 
-        /* Exclusive Privilege Notification Form */
-        .notify-form {
-            width: 100%;
-            max-width: 450px;
-            display: flex;
-            position: relative;
-            opacity: 0;
-            transform: translateY(15px);
-            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards;
-        }
-
-        .email-input {
-            width: 100%;
-            padding: 16px 24px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-right: none;
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            transition: all 0.4s ease;
-        }
-
-        .email-input:focus {
-            outline: none;
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-
-        .submit-btn {
-            padding: 0 32px;
-            background: var(--text-primary);
-            border: 1px solid var(--text-primary);
-            color: var(--bg-color);
-            font-family: var(--font-sans);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .submit-btn:hover {
+        /* Premium Luxury Order Button */
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 44px;
             background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.8);
             color: var(--text-primary);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .order-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .order-btn:hover::before {
+            left: 100%;
+        }
+
+        .order-btn:hover {
+            color: #031133;
+            background: var(--text-primary);
             border-color: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
         }
 
         /* Footer Details */
@@ -239,7 +258,7 @@
             text-transform: uppercase;
             z-index: 10;
             opacity: 0;
-            animation: fadeIn 2s ease 1.5s forwards;
+            animation: fadeIn 2s ease 1.2s forwards;
         }
 
         /* Animation Keyframes */
@@ -251,7 +270,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(25px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeInScale {
@@ -264,9 +283,11 @@
 
         /* Responsive Design Adjustments */
         @media (max-width: 768px) {
-            .brand-title { font-size: 2.5rem; letter-spacing: 0.15em; }
-            .tagline { font-size: 0.85rem; letter-spacing: 0.25em; }
+            .brand-title { font-size: 2.6rem; letter-spacing: 0.1em; }
+            .product-name { font-size: 1.3rem; letter-spacing: 0.2em; }
+            .tagline { font-size: 0.8rem; letter-spacing: 0.18em; }
             .header-line { display: none; }
+            .order-btn { padding: 16px 36px; width: 100%; max-width: 320px; }
         }
     </style>
 </head>
@@ -276,7 +297,7 @@
     <header>
         <div class="brand-status">Est. 2026</div>
         <div class="header-line"></div>
-        <div class="brand-status">Private Collection</div>
+        <div class="brand-status">Signature Edition</div>
     </header>
 
     <!-- Main Dynamic Teaser Section -->
@@ -287,24 +308,33 @@
             <div class="logo-fallback" id="logoFallback">Z</div>
         </div>
 
-        <h1 class="brand-title">Zicelle</h1>
-        <p class="tagline">An uncompromising vision of luxury. Shaping the definition of modern elegance.</p>
+        <!-- Product Showcase Section -->
+        <div class="product-showcase">
+            <span class="product-tag">The First Reveal</span>
+            <h1 class="brand-title">Zicelle</h1>
+            <h2 class="product-name">Vampire Blood</h2>
+            
+            <p class="tagline">
+                An intoxicating blend of deep dark mystery and velvet sophistication. 
+                Crafted for those who leave an unforgettable impression in the dark.
+            </p>
 
-        <!-- Exclusive Access Notification Sign-up -->
-        <form class="notify-form" onsubmit="event.preventDefault(); alert('You have been granted early access updates.');">
-            <input type="email" class="email-input" placeholder="Enter your email for private entry" required>
-            <button type="submit" class="submit-btn">Notify</button>
-        </form>
+            <!-- Direct Instant Order Access Button to WhatsApp -->
+            <a href="https://wa.me/8801882343923?text=Hello%20Zicelle,%20I%20would%20like%20to%20order%20the%20Vampire%20Blood%20Perfume." 
+               target="_blank" 
+               class="order-btn">
+               Purchase Via WhatsApp
+            </a>
+        </div>
     </main>
 
     <!-- Footer Identity -->
     <footer>
-        &copy; 2026 Zicelle. All Rights Reserved. By invitation only.
+        &copy; 2026 Zicelle Haute Parfumerie. All Rights Reserved.
     </footer>
 
     <script>
         function handleImageError() {
-            // Hides the broken image icon and displays a premium letter monogram instead
             document.getElementById('brandLogo').style.display = 'none';
             document.getElementById('logoFallback').style.display = 'flex';
         }
