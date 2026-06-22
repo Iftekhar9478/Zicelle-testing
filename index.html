@@ -15,7 +15,7 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.7);
             --accent-gold: #d4af37; /* Subtle luxury gold accent */
-            --vampire-crimson: #800020; /* Deep crimson accent for Vampire Blood */
+            --vampire-crimson: #800020; 
             --font-serif: 'Cinzel', serif;
             --font-sans: 'Montserrat', sans-serif;
         }
@@ -39,7 +39,7 @@
             position: relative;
         }
 
-        /* Premium Ambient Background Animation with Crimson Tones */
+        /* Premium Ambient Background Glow */
         body::before {
             content: '';
             position: absolute;
@@ -47,7 +47,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(128, 0, 32, 0.12) 0%, rgba(3,17,51,0) 75%);
+            background: radial-gradient(circle, rgba(128, 0, 32, 0.1) 0%, rgba(3,17,51,0) 75%);
             animation: ambientFloat 25s infinite linear;
             z-index: 0;
             pointer-events: none;
@@ -62,7 +62,7 @@
         header {
             width: 100%;
             max-width: 1200px;
-            padding: 40px 20px;
+            padding: 30px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,7 +73,7 @@
 
         .header-line {
             height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
             flex-grow: 1;
             margin: 0 30px;
         }
@@ -86,74 +86,80 @@
             font-weight: 600;
         }
 
-        /* Main Content Hero */
+        /* Main Showcase Layout */
         main {
-            max-width: 900px;
-            padding: 40px 20px;
-            text-align: center;
+            width: 100%;
+            max-width: 1100px;
+            padding: 20px;
             z-index: 10;
+            flex-grow: 1;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-grow: 1;
         }
 
-        /* Container for 1000008356.png Logo */
-        .logo-container {
-            width: 90px;
-            height: 90px;
-            margin-bottom: 25px;
+        .showcase-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Left Side: Premium Image Presentation */
+        .image-side {
             opacity: 0;
-            transform: scale(0.9);
-            animation: fadeInScale 1.8s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+            transform: translateX(-30px);
+            animation: fadeInLeft 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards;
             position: relative;
             display: flex;
-            align-items: center;
             justify-content: center;
         }
 
-        /* Decorative thin ring around the logo image */
-        .logo-container::after {
-            content: '';
-            position: absolute;
-            top: -6px;
-            left: -6px;
-            right: -6px;
-            bottom: -6px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 50%;
-            animation: spin 40s linear infinite;
+        .product-image-wrapper {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 1 / 1;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(128, 0, 32, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .logo-img {
+        .product-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-            display: block;
+            animation: slowZoom 20s infinite alternate ease-in-out;
         }
 
-        .logo-fallback {
-            display: none;
-            font-family: var(--font-serif);
-            font-size: 1.8rem;
-            color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.02);
+        @keyframes slowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
         }
 
-        /* Product Presentation Layout */
-        .product-showcase {
-            margin-top: 10px;
+        /* Floating Monogram Overlay on Image Corner */
+        .mini-monogram {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(3, 17, 51, 0.85);
+            backdrop-filter: blur(8px);
+            border-radius: 4px;
+            padding: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Right Side: Details & Ordering */
+        .info-side {
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+            transform: translateX(30px);
+            animation: fadeInRight 1.5s cubic-bezier(0.25, 1, 0.5, 1) 0.6s forwards;
+            text-align: left;
         }
 
         .product-tag {
@@ -161,7 +167,7 @@
             text-transform: uppercase;
             letter-spacing: 0.4em;
             color: var(--accent-gold);
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: block;
             font-weight: 600;
         }
@@ -170,43 +176,50 @@
             font-family: var(--font-serif);
             font-size: 3.8rem;
             font-weight: 400;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             line-height: 1.1;
-            background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.7) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
         }
 
         .product-name {
             font-family: var(--font-serif);
             font-size: 1.8rem;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: #f2e6e6;
-            margin: 15px 0 25px 0;
+            color: #e6dada;
+            margin-bottom: 25px;
             font-weight: 400;
-            text-shadow: 0 0 20px rgba(128, 0, 32, 0.6);
+        }
+
+        .price-tag {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            display: block;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
 
         .tagline {
             font-size: 0.95rem;
             font-weight: 200;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.15em;
             color: var(--text-secondary);
-            margin: 0 auto 45px auto;
-            max-width: 600px;
+            margin-bottom: 40px;
             line-height: 1.8;
+            max-width: 500px;
         }
 
-        /* Premium Luxury Order Button */
+        /* Ordering Action Button */
         .order-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 18px 44px;
+            padding: 18px 45px;
             background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.85);
             color: var(--text-primary);
             font-family: var(--font-sans);
             font-size: 0.8rem;
@@ -216,45 +229,28 @@
             text-decoration: none;
             cursor: pointer;
             transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
-            position: relative;
-            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .order-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .order-btn:hover::before {
-            left: 100%;
         }
 
         .order-btn:hover {
             color: #031133;
             background: var(--text-primary);
             border-color: var(--text-primary);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
         }
 
-        /* Footer Details */
+        /* Footer Identity */
         footer {
             width: 100%;
             max-width: 1200px;
-            padding: 40px 20px;
+            padding: 30px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.25);
             text-transform: uppercase;
             z-index: 10;
             opacity: 0;
@@ -262,32 +258,29 @@
         }
 
         /* Animation Keyframes */
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
-        @keyframes fadeInScale {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes spin {
-            100% { transform: rotate(360deg); }
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        /* Responsive Design Adjustments */
-        @media (max-width: 768px) {
-            .brand-title { font-size: 2.6rem; letter-spacing: 0.1em; }
-            .product-name { font-size: 1.3rem; letter-spacing: 0.2em; }
-            .tagline { font-size: 0.8rem; letter-spacing: 0.18em; }
+        /* Responsive Tweaks */
+        @media (max-width: 868px) {
+            .showcase-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .info-side { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .brand-title { font-size: 2.8rem; }
+            .product-name { font-size: 1.4rem; }
+            .price-tag { font-size: 1.8rem; }
             .header-line { display: none; }
-            .order-btn { padding: 16px 36px; width: 100%; max-width: 320px; }
+            .order-btn { width: 100%; max-width: 340px; }
         }
     </style>
 </head>
@@ -297,47 +290,52 @@
     <header>
         <div class="brand-status">Est. 2026</div>
         <div class="header-line"></div>
-        <div class="brand-status">Signature Edition</div>
+        <div class="brand-status">Signature Collection</div>
     </header>
 
-    <!-- Main Dynamic Teaser Section -->
+    <!-- Main Content Presentation Grid -->
     <main>
-        <!-- Luxury Brand Logo Frame referencing 1000008356.png -->
-        <div class="logo-container">
-            <img src="1000008356.png" alt="Zicelle Monogram" class="logo-img" id="brandLogo" onerror="handleImageError()">
-            <div class="logo-fallback" id="logoFallback">Z</div>
-        </div>
-
-        <!-- Product Showcase Section -->
-        <div class="product-showcase">
-            <span class="product-tag">The First Reveal</span>
-            <h1 class="brand-title">Zicelle</h1>
-            <h2 class="product-name">Vampire Blood</h2>
+        <div class="showcase-container">
             
-            <p class="tagline">
-                An intoxicating blend of deep dark mystery and velvet sophistication. 
-                Crafted for those who leave an unforgettable impression in the dark.
-            </p>
+            <!-- Left Side: Product Image View -->
+            <div class="image-side">
+                <div class="product-image-wrapper">
+                    <!-- Brand Monogram Overlay referencing 1000008356.png -->
+                    <img src="1000008356.png" class="mini-monogram" alt="Zicelle Monogram" onerror="this.style.display='none'">
+                    
+                    <!-- Main Product Image View referencing 1000008937.jpg -->
+                    <img src="1000008937.jpg" alt="Vampire Blood Perfume Bottle" class="product-img" id="perfumeImg" onerror="this.src='https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=500&q=80'">
+                </div>
+            </div>
 
-            <!-- Direct Instant Order Access Button to WhatsApp -->
-            <a href="https://wa.me/8801882343923?text=Hello%20Zicelle,%20I%20would%20like%20to%20order%20the%20Vampire%20Blood%20Perfume." 
-               target="_blank" 
-               class="order-btn">
-               Purchase Via WhatsApp
-            </a>
+            <!-- Right Side: Details and Call to Action -->
+            <div class="info-side">
+                <span class="product-tag">The Debut Scent</span>
+                <h1 class="brand-title">Zicelle</h1>
+                <h2 class="product-name">Vampire Blood</h2>
+                
+                <span class="price-tag">999 TK</span>
+                
+                <p class="tagline">
+                    An intoxicating blend of velvet depth and striking sophisticated warmth. 
+                    Crafted meticulously for individuals who leave a lingering mystery long after they vanish.
+                </p>
+
+                <!-- Direct Checkout Link -->
+                <a href="https://wa.me/8801882343923?text=Hello%20Zicelle%20Team!%20I%20want%20to%20place%20an%20order%20for%20the%20Vampire%20Blood%20Perfume%20(999%20TK)." 
+                   target="_blank" 
+                   class="order-btn">
+                   Order Via WhatsApp
+                </a>
+            </div>
+
         </div>
     </main>
 
-    <!-- Footer Identity -->
+    <!-- Footer Frame -->
     <footer>
-        &copy; 2026 Zicelle Haute Parfumerie. All Rights Reserved.
+        &copy; 2026 Zicelle Maison. All Rights Reserved.
     </footer>
 
-    <script>
-        function handleImageError() {
-            document.getElementById('brandLogo').style.display = 'none';
-            document.getElementById('logoFallback').style.display = 'flex';
-        }
-    </script>
 </body>
 </html>
